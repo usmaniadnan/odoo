@@ -7,7 +7,9 @@
     'sequence': 6,
     'author': 'pharmola',
     'summary': "This module allows you to create quotations in pos." ,
+    'license': 'LGPL-3',
     'description': """
+    
 
 =======================
 
