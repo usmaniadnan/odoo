@@ -35,4 +35,18 @@ This module allows you to create quotations in pos.
     'auto_install': False,
     'price': 50,
     'currency': 'USD',
+    'images': [
+'static/description/banner.PNG',
+'static/description/icon.png',
+'static/description/image 1.png',
+'static/description/image 2.png',
+'static/description/image 3.png',
+'static/description/image 4.png',
+'static/description/image 5.png',
+'static/description/image 6.png',
+'static/description/image 7.png',
+'static/description/image 8.png',
+'static/description/Capture.PNG',
+
+],
 }
