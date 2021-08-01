@@ -1,8 +1,8 @@
 
 
 {
-    'name': 'POS Quotation',
-    'version': '1.0',
+    'name': 'POS Quotation Print',
+    'version': '14.0.0.1',
     'category': 'Point of Sale',
     'sequence': 6,
     'author': 'pharmola',
