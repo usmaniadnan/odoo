@@ -46,7 +46,7 @@ This module allows you to create quotations in pos and print in A4 and mobile Pr
 'static/description/image 6.png',
 'static/description/image 7.png',
 'static/description/image 8.png',
-'static/description/Capture.PNG',
+'static/description/Capture.png',
 
 ],
 }
