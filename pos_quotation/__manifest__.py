@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 {
-    'name': 'POS Quotations',
+    'name': 'POS Quotation',
     'version': '1.0',
     'category': 'Point of Sale',
     'sequence': 6,
