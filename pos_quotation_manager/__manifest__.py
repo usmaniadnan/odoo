@@ -1,7 +1,7 @@
 
 
 {
-    'name': 'POS Quotation Print',
+    'name': 'POS Quotation Manager',
     'version': '14.0.0.1',
     'category': 'Point of Sale',
     'sequence': 6,
