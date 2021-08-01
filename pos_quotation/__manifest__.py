@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+
 
 {
     'name': 'POS Quotation',
@@ -31,6 +31,6 @@ This module allows you to create quotations in pos.
     'installable': True,
     'website': '',
     'auto_install': False,
-    'price': 70,
-    'currency': 'EUR',
+    'price': 50,
+    'currency': 'USD',
 }
