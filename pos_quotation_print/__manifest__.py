@@ -13,7 +13,7 @@
 
 =======================
 
-This module allows you to create quotations in pos.
+This module allows you to create quotations in pos and print in A4 and mobile Printer size.
 
 """,
     'depends': ['point_of_sale'],
