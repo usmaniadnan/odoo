@@ -20,6 +20,7 @@
 
     # any module necessary for this one to work correctly
     'depends': ['mail'],
+    'license': 'LGPL-3',
 
     # always loaded
     'data': [
