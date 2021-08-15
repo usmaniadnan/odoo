@@ -29,7 +29,7 @@
     ],
     # only loaded in demonstration mode
     'demo': [
-        'demo/demo.xml',
+        'demo/demo.xml',],
         'images': [
 'static/description/banner.PNG',
 'static/description/icon.png',
