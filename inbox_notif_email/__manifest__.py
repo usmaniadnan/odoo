@@ -34,8 +34,5 @@
 'static/description/banner.PNG',
 'static/description/icon.png',
 'static/description/image1.png',
-
-
-],
     ],
 }
