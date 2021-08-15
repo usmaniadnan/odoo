@@ -6,7 +6,7 @@
     'category': 'Point of Sale',
     'sequence': 6,
     'author': "odoozone",
-    'website': 'http://odoozone.com/',
+    'website': "http://odoozone.com/",
     'summary': "This module allows you to create quotations in pos." ,
     'license': 'LGPL-3',
     'description': """
