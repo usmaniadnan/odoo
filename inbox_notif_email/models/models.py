@@ -19,6 +19,8 @@
 import ast
 import base64
 import datetime
+import inspect
+
 import dateutil
 import email
 import email.policy
@@ -196,6 +198,7 @@ class MailThread(models.AbstractModel):
             ('res_id', 'in', self.ids),
             ('partner_id', '=', self.env.user.partner_id.id),
             ])
+        print(followers);
         # using read() below is much faster than followers.mapped('res_id')
         following_ids = [res['res_id'] for res in followers.read(['res_id'])]
         for record in self:
@@ -291,67 +294,73 @@ class MailThread(models.AbstractModel):
     # CRUD
     # ------------------------------------------------------------
 
-    @api.model_create_multi
-    def create(self, vals_list):
-        """ Chatter override :
-            - subscribe uid
-            - subscribe followers of parent
-            - log a creation message
-        """
-        if self._context.get('tracking_disable'):
-            threads = super(MailThread, self).create(vals_list)
-            threads._discard_tracking()
-            return threads
-
-        threads = super(MailThread, self).create(vals_list)
-        # subscribe uid unless asked not to
-        if not self._context.get('mail_create_nosubscribe'):
-            for thread in threads:
-                self.env['mail.followers']._insert_followers(
-                    thread._name, thread.ids, self.env.user.partner_id.ids,
-                    None, None, None,
-                    customer_ids=[],
-                    check_existing=False
-                )
-
-        # auto_subscribe: take values and defaults into account
-        create_values_list = {}
-        for thread, values in zip(threads, vals_list):
-            create_values = dict(values)
-            for key, val in self._context.items():
-                if key.startswith('default_') and key[8:] not in create_values:
-                    create_values[key[8:]] = val
-            thread._message_auto_subscribe(create_values, followers_existing_policy='update')
-            create_values_list[thread.id] = create_values
-
-        # automatic logging unless asked not to (mainly for various testing purpose)
-        if not self._context.get('mail_create_nolog'):
-            threads_no_subtype = self.env[self._name]
-            for thread in threads:
-                subtype = thread._creation_subtype()
-                if subtype:  # if we have a subtype, post message to notify users from _message_auto_subscribe
-                    thread.sudo().message_post(subtype_id=subtype.id, author_id=self.env.user.partner_id.id)
-                else:
-                    threads_no_subtype += thread
-            if threads_no_subtype:
-                bodies = dict(
-                    (thread.id, thread._creation_message())
-                    for thread in threads_no_subtype)
-                threads_no_subtype._message_log_batch(bodies=bodies)
-
-        # post track template if a tracked field changed
-        threads._discard_tracking()
-        if not self._context.get('mail_notrack'):
-            fnames = self._get_tracked_fields()
-            for thread in threads:
-                create_values = create_values_list[thread.id]
-                changes = [fname for fname in fnames if create_values.get(fname)]
-                # based on tracked field to stay consistent with write
-                # we don't consider that a falsy field is a change, to stay consistent with previous implementation,
-                # but we may want to change that behaviour later.
-                thread._message_track_post_template(changes)
-
-        return threads
+    # @api.model_create_multi
+    # def create(self, vals_list):
+    #     """ Chatter override :
+    #         - subscribe uid
+    #         - subscribe followers of parent
+    #         - log a creation message
+    #     """
+    #     if self._context.get('tracking_disable'):
+    #         threads = super(MailThread, self).create(vals_list)
+    #         threads._discard_tracking()
+    #         return threads
+    #     curframe = inspect.currentframe()
+    #     calframe = inspect.getouterframes(curframe, 2)
+    #     print("vals_list : ", vals_list)
+    #     print('caller name:', calframe)
+    #
+    #     threads = super(MailThread, self).create(vals_list)
+    #
+    #
+    #     # subscribe uid unless asked not to
+    #     if not self._context.get('mail_create_nosubscribe'):
+    #         for thread in threads:
+    #             self.env['mail.followers']._insert_followers(
+    #                 thread._name, thread.ids, self.env.user.partner_id.ids,
+    #                 None, None, None,
+    #                 customer_ids=[],
+    #                 check_existing=False
+    #             )
+    #
+    #     # auto_subscribe: take values and defaults into account
+    #     create_values_list = {}
+    #     for thread, values in zip(threads, vals_list):
+    #         create_values = dict(values)
+    #         for key, val in self._context.items():
+    #             if key.startswith('default_') and key[8:] not in create_values:
+    #                 create_values[key[8:]] = val
+    #         thread._message_auto_subscribe(create_values, followers_existing_policy='update')
+    #         create_values_list[thread.id] = create_values
+    #
+    #     # automatic logging unless asked not to (mainly for various testing purpose)
+    #     if not self._context.get('mail_create_nolog'):
+    #         threads_no_subtype = self.env[self._name]
+    #         for thread in threads:
+    #             subtype = thread._creation_subtype()
+    #             if subtype:  # if we have a subtype, post message to notify users from _message_auto_subscribe
+    #                 thread.sudo().message_post(subtype_id=subtype.id, author_id=self.env.user.partner_id.id)
+    #             else:
+    #                 threads_no_subtype += thread
+    #         if threads_no_subtype:
+    #             bodies = dict(
+    #                 (thread.id, thread._creation_message())
+    #                 for thread in threads_no_subtype)
+    #             threads_no_subtype._message_log_batch(bodies=bodies)
+    #
+    #     # post track template if a tracked field changed
+    #     threads._discard_tracking()
+    #     if not self._context.get('mail_notrack'):
+    #         fnames = self._get_tracked_fields()
+    #         for thread in threads:
+    #             create_values = create_values_list[thread.id]
+    #             changes = [fname for fname in fnames if create_values.get(fname)]
+    #             # based on tracked field to stay consistent with write
+    #             # we don't consider that a falsy field is a change, to stay consistent with previous implementation,
+    #             # but we may want to change that behaviour later.
+    #             thread._message_track_post_template(changes)
+    #
+    #     return threads
 
     def write(self, values):
         if self._context.get('tracking_disable'):
@@ -2724,6 +2733,9 @@ class MailThread(models.AbstractModel):
         :param customer_ids: see ``_insert_followers`` """
         if not self:
             return True
+        curframe = inspect.currentframe()
+        calframe = inspect.getouterframes(curframe, 2)
+        print('caller name:', calframe)
 
         if not subtype_ids:
             self.env['mail.followers']._insert_followers(
@@ -2845,6 +2857,9 @@ class MailThread(models.AbstractModel):
 
         :param updated_values: values modifying the record trigerring auto subscription
         """
+        curframe = inspect.currentframe()
+        calframe = inspect.getouterframes(curframe, 2)
+        print('caller name:', calframe)
         if not self:
             return True
 
