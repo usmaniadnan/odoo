@@ -37,7 +37,6 @@ This module allows you to create quotations in pos and print in A4 and mobile Pr
     'price': 29,
     'currency': 'EUR',
     'images': [
-'static/description/banner.PNG',
 'static/description/banner.gif',
 'static/description/icon.png',
 'static/description/image 1.png',
