@@ -4,7 +4,8 @@
     'version': '14.0.0.1',
     'category': 'Point of Sale',
     'sequence': 6,
-    'author': 'pharmola',
+    'author': 'odoozone',
+    'website': 'http://odoozone.com/',
     'summary': "Add notes to POS orders and invoice." ,
     'license': 'LGPL-3',
     'description': """
