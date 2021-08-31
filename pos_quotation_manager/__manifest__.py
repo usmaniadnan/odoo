@@ -2,7 +2,9 @@
 
 {
     'name': 'POS Quotation Manager',
-    'summary': "This module allows you to create quotations in pos." ,
+    'summary': """
+    This module allows you to create quotations in pos
+    """,
     'description': """
     
 
@@ -11,6 +13,7 @@
 This module allows you to create quotations in pos and print in A4 and mobile Printer size.
 
 """,
+
     'author': "odoozone",
     'website': 'http://odoozone.com/',
     'version': '14.0.0.1',

@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'POS invoice note',
-    'summary': "Add notes to POS orders and invoice." ,
+    'summary': """
+    Add notes to POS orders and invoice.""" ,
     'description': """
 
 
@@ -10,7 +11,8 @@
 This module allows you to add notes in pos orders and invoices.
 
 """,
-    'author': 'odoozone',
+     
+    'author': "odoozone",
     'website': 'http://odoozone.com/',
     
     'version': '14.0.0.1',
