@@ -31,11 +31,8 @@ This module allows you to add notes in pos orders and invoices.
     'qweb': [
         'static/src/xml/pos.xml',
     ],
-    'images': [
-        'static/description/create_qut.jpg',
-    ],
+    
     'installable': True,
-    'website': '',
     'auto_install': False,
     'price': 30,
     'currency': 'USD',

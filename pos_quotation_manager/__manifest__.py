@@ -38,7 +38,6 @@ This module allows you to create quotations in pos and print in A4 and mobile Pr
         'static/description/create_qut.jpg',
     ],
     'installable': True,
-    'website': '',
     'auto_install': False,
     'price': 29,
     'currency': 'EUR',
