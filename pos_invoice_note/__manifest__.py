@@ -1,13 +1,7 @@
-
+# -*- coding: utf-8 -*-
 {
     'name': 'POS invoice note',
-    'version': '14.0.0.1',
-    'category': 'Point of Sale',
-    'sequence': 6,
-    'author': 'odoozone',
-    'website': 'http://odoozone.com/',
     'summary': "Add notes to POS orders and invoice." ,
-    'license': 'LGPL-3',
     'description': """
 
 
@@ -16,6 +10,15 @@
 This module allows you to add notes in pos orders and invoices.
 
 """,
+    'author': 'odoozone',
+    'website': 'http://odoozone.com/',
+    
+    'version': '14.0.0.1',
+    'category': 'Point of Sale',
+    'sequence': 6,
+    
+    'license': 'LGPL-3',
+    
     'depends': ['point_of_sale'],
     'data': [
         'security/ir.model.access.csv',

@@ -1,14 +1,8 @@
-
+# -*- coding: utf-8 -*-
 
 {
     'name': 'POS Quotation Manager',
-    'version': '14.0.0.1',
-    'category': 'Point of Sale',
-    'sequence': 6,
-    'author': "odoozone",
-    'website': 'http://odoozone.com/',
     'summary': "This module allows you to create quotations in pos." ,
-    'license': 'LGPL-3',
     'description': """
     
 
@@ -17,6 +11,15 @@
 This module allows you to create quotations in pos and print in A4 and mobile Printer size.
 
 """,
+    'author': "odoozone",
+    'website': 'http://odoozone.com/',
+    'version': '14.0.0.1',
+    'category': 'Point of Sale',
+    'sequence': 6,
+    
+    
+    'license': 'LGPL-3',
+    
     'depends': ['point_of_sale'],
     'data': [
         'security/ir.model.access.csv',
