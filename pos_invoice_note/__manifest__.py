@@ -39,10 +39,10 @@ This module allows you to add notes in pos orders and invoices.
     'images': [
         'static/description/banner.gif',
         'static/description/icon.png',
-        'static/description/Image1.png',
-        'static/description/Image2.png',
-        'static/description/Image3.png',
-        'static/description/Image4.png',
+        'static/description/image1.png',
+        'static/description/image2.png',
+        'static/description/image3.png',
+        'static/description/image4.png',
 
     ],
 }
