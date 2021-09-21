@@ -31,8 +31,7 @@
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',],
-        'price': 14.3,
-    'currency': 'EUR',
+     
         'images': [
 'static/description/banner.PNG',
 'static/description/icon.png',

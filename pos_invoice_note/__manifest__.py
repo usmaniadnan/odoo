@@ -34,8 +34,6 @@ This module allows you to add notes in pos orders and invoices.
     
     'installable': True,
     'auto_install': False,
-    'price': 30,
-    'currency': 'USD',
     'images': [
         'static/description/banner.gif',
         'static/description/icon.png',
