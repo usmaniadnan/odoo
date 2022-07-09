@@ -40,7 +40,7 @@
     'currency': 'EUR',
 
 'images': [
-'static/description/banner.PNG',
+'static/description/banner.png',
 'static/description/icon.png',
 'static/description/image1.png',
     ],
