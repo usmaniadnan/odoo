@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+     <record id="stock_inventory_list_view" model="ir.ui.view">
+        <field name="name">stock.inventory.line.tree.inherit.inventory.product.configurator</field>
+        <field name="model">stock.inventory.line</field>
+        <field name="inherit_id" ref="stock.stock_inventory_line_tree"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//tree/field[@name='outdated']" position="after">
+                 <field name="is_configurable_product" invisible="1"/>
+                <field name="product_tmpl_id" widget="inventory_configurator"/>
+                </xpath>
+
+            </field>
+    </record>
+</odoo>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+  <template id="assets_backend_inherit_inventory" inherit_id="web.assets_backend" name=" Inventory product selector">
+      <xpath expr="script[last()]" position="after">
+          <script type="text/javascript" src="/inventory_product_selector/static/src/js/inventory_configurator.js"/>
+      </xpath>
+  </template>
+
+
+
+
+</odoo>
