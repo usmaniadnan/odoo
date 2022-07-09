@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+  <template id="assets_backend_inherit_mrp" inherit_id="web.assets_backend" name=" MRP Grid assets">
+      <xpath expr="script[last()]" position="after">
+          <script type="text/javascript" src="/purchase_product_selector/static/src/js/mrp_configurator.js"/>
+      </xpath>
+  </template>
+
+
+
+
+</odoo>
