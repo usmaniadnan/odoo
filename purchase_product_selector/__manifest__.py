@@ -39,6 +39,12 @@
      'price': 29,
     'currency': 'EUR',
 
+'images': [
+'static/description/banner.PNG',
+'static/description/icon.png',
+'static/description/image1.png',
+    ],
+
     'assets': {
         'web.assets_backend': [
             'purchase_product_selector/static/src/js/mrp_configurator.js',
